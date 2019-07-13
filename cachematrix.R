@@ -1,7 +1,7 @@
-## Put comments here that give an overall description of what your
+##Thank for your comments
 ## functions do
 
-## Write a short comment describing this function
+## the frist function is used to store “special matrix”
 
 makeCacheMatrix <- function(x=matrix()){
         m <- NULL
@@ -10,24 +10,24 @@ makeCacheMatrix <- function(x=matrix()){
                 m <<- NULL
         }
         get <- function() x
-        setmean <- function(mean) m <<- mean
-        getmean <- function() m
+        setsolve <- function(solve) s <<- solve
+        getsolve <- function() s
         list(set = set, get = get,
-             setmean = setmean,
-             getmean = getmean)
+             setsolve = setsolve,
+             getsolve = getsolve)
 }
 
 
-## Write a short comment describing this function
+## the scenod function dose two things. 1. Determine if a special matrix alreay exists； 2. if not，calculate the inverse of matrix and save it 
 
 cacheSolve <- function(x, ...){
-        m <- x$getmean()
-        if(!is.null(m)) {
+        s <- x$getsolve()
+        if(!is.null(s)) {
                 message("getting cached data")
-                return(m)
+                return(s)
         }
         data <- x$get()
-        m <-solve(data, ...)
-        x$setmean(m)
-        m
+        s <-solve(data, ...)
+        x$setsolve(s)
+        s
 }
